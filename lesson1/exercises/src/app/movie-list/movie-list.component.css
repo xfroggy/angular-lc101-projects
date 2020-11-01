@@ -1,0 +1,12 @@
+.movies {
+    color: burlywood;
+}
+
+.movies li{
+    color: brown;
+    font-size: large;
+}
+
+.movies h3{
+    text-align: center;
+}

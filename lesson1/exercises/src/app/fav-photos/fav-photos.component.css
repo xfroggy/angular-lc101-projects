@@ -3,9 +3,18 @@ h3 {
 }
 
 img {
+  
+  height: 150px;
+
 
 }
 
 .photos {
    text-align: center;
+   
+}
+
+.img-box {
+   display: flex;
+   justify-content: space-between;
 }
