@@ -4,7 +4,8 @@ h3 {
 
 img {
   
-  height: 150px;
+  width: 150px;
+  padding: 5px;
 
 
 }
@@ -15,6 +16,5 @@ img {
 }
 
 .img-box {
-   display: flex;
-   justify-content: space-between;
+ 
 }
