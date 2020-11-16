@@ -12,4 +12,62 @@ export class AppComponent {
   height = 0;
   width = 0;
   message = 'Space shuttle ready for takeoff!';
+  takeOffEnabled: boolean = true;
+
+  edgingCheck(width, height){
+    if (width > 250000 || width < 0 || height< 10001 || height > 320000) {
+      this.color = 'orange';
+    } else {
+      this.color = 'blue';
+    }
+  }
+
+  finalEdgeCheck(width,height){
+    if(width>260000 || width<0 ||height <0 || height >330000) {
+      this.takeOffEnabled = true;
+     }
+  }
+
+  handleTakeOff(){
+    let result = window.confirm('Are you sure the shuttle is ready for takeoff?');
+    if (result) {
+      this.color = 'blue';
+      this.height = 10000;
+      this.width = 0;
+      this.message = "Shuttle in flight.";
+      this.takeOffEnabled = false;
+    }
+  }
+
+  moveRocket(rocketImage, direction) {
+    if(direction ==='right'){
+      let movement = parseInt(rocketImage.style.left) + 10 +'px';
+      rocketImage.style.left = movement;
+      this.width = this.width + 10000;
+    } else if (direction ==="left"){
+      let movement = parseInt(rocketImage.style.left) - 10 +'px';
+      rocketImage.style.left = movement;
+      this.width = this.width - 10000;
+    } else if (direction === 'up'){
+      let movement = parseInt(rocketImage.style.bottom) +10 + 'px';
+      rocketImage.style.bottom = movement;
+      this.height = this.height+10000;
+    }else if (direction === 'down'){
+      let movement = parseInt(rocketImage.style.bottom) -10 + 'px';
+      rocketImage.style.bottom = movement;
+      this.height = this.height-10000;
+    }
+    this.edgingCheck(this.width, this.height);
+    this.finalEdgeCheck(this.width, this.height);
+  }
+
+  land(rocketImage){
+    rocketImage.style.bottom = '0px';
+    this.takeOffEnabled = true;
+  }
+
+  missionAbort(rocketImage){
+    rocketImage.style.bottom = '0px';
+    this.takeOffEnabled = true;
+  }
 }
